@@ -1,0 +1,25 @@
+{
+  "name": "metaapi",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"Add your build command here\"",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/meta2943741/metaapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/meta2943741/metaapi/issues"
+  },
+  "homepage": "https://gitlab.com/meta2943741/metaapi#readme",
+  "dependencies": {
+    "debug": "^4.3.4",
+    "uuid": "^9.0.1",
+    "vercel": "^32.4.1"
+  }
+}

@@ -1,0 +1,39 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  VERCEL_URL: meta-ge1ucabn2-metateam.vercel.app
+
+before_script:
+  - apt-get update -qy
+  - apt-get install -y curl
+  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  - source ~/.nvm/nvm.sh
+  - nvm install 18
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.11
+  - export PATH=$HOME/.yarn/bin:$PATH
+
+build:
+  stage: build
+  script:
+    - nvm use 18
+    - yarn install
+    - yarn build
+
+test:
+  stage: test
+  script:
+    - nvm use 18
+    - yarn test
+
+deploy:
+  stage: deploy
+  only:
+    - main
+  script:
+    - nvm use 18
+    - npx vercel --token lvfRHafSo0yxPtc5hhADVo6h --prod -y # Replace with your Vercel token
+    - export VERCEL_URL=$(npx vercel ls | awk '/meta-api/{print $2}')  # Replace with your Vercel project name
+    - echo "Deployed to $VERCEL_URL"
